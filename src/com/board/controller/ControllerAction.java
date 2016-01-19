@@ -6,9 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
  
 public class ControllerAction extends HttpServlet {
- 
     private Map commandMap = new HashMap(); // 명령어와 명령어 처리 클래스를 쌍으로 저장
-
     public void init(ServletConfig config) throws ServletException {
         // Common properties 
         loadProperties("com/board/properties/Command");

@@ -1,9 +1,7 @@
 package com.board.dao;
  
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
- 
 import com.board.beans.Board;
  
 public class BoardDao extends CommonDao {
@@ -14,6 +12,6 @@ public class BoardDao extends CommonDao {
     }
  
     public ArrayList<Board> getArticleList() throws SQLException {
-    	return (ArrayList<Board>)GetDB().queryForList("getArticleList", null);
+    	return  (ArrayList<Board>)GetDB().queryForList("getArticleList", null);
     }
 }
