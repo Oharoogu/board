@@ -1,11 +1,6 @@
-<%@page import="java.util.regex.Pattern"%>
-
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 
-<%@ page import="java.sql.*"%>
-<%@ page import="com.board.beans.Board" %> 
-<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,40 +19,6 @@
 		}
 </style>
 	</head>
-	<%
-		try {
-			String driverName = "oracle.jdbc.driver.OracleDriver";
-			String url = "jdbc:oracle:thin:@localhost:1521:Orcl";
-			ResultSet rs = null;
-			Class.forName(driverName);
-			Connection con = DriverManager.getConnection(url, "Ohha", "1234");
-			out.println("Oracle Database Connection Success.");
-			Statement stmt = con.createStatement();
-			String sql = "select * from board order by idx desc";
-			rs = stmt.executeQuery(sql);
-			
-			ArrayList<Board> articleList = new ArrayList<Board>();
-			
-			while (rs.next()) {
-
-				Board article = new Board(); //데이터들을 담기위해 Board객체에 메모리를 할당하는 코드입니다.
-
-				article.setIdx(rs.getInt("idx")); // Integer.parseInt는 String형을 int형식으로 형변환
-				article.setTitle(rs.getString("title"));
-				article.setWriter(rs.getString("writer"));
-				article.setRegdate(rs.getString("regdate"));
-				article.setCount(rs.getInt("count"));
-				articleList.add(article); // 셋팅된 빈을 리스트에 추가합니다.
-			}
-			request.setAttribute("articleList", articleList); // 셋팅된 리스트를 뷰에 포워드합니다.
-	
-			con.close();
-		} catch (Exception e) {
-			out.println("Oracle Database Connection Something Problem. <hr>");
-			out.println(e.getMessage());
-			e.printStackTrace();
-		}
-	%>
 	<body>
 		<!-- HTML문서의 주 내용이 들어가는 부분입니다. -->
 		<h1>게시글 리스트</h1>
