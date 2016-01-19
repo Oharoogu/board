@@ -13,7 +13,9 @@ public class ListAction implements CommandAction {
  
     public String requestPro(HttpServletRequest request,
             HttpServletResponse response) throws Throwable {
- 
+    	
+    		request.setCharacterEncoding("euc-kr");
+    		
             ArrayList<Board> articleList = BoardDao.getInstance().getArticleList();  
  
             request.setAttribute("articleList", articleList);   // 셋팅된 리스트를 뷰에 포워드합니다.
