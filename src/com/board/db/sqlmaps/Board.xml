@@ -26,5 +26,9 @@
 	<delete id="deleteArticle" parameterClass="int">
 		DELETE FROM BOARD WHERE idx = #value#
 	</delete>
+	
+	<update id="setArticleCount" parameterClass="board">
+		update board set count = #count# where idx = #idx#
+	</update>
 </sqlMap>
 
