@@ -63,7 +63,7 @@
             <td colspan="6">${content}</td>
         </tr>
     </table>
-    <a href="delete.jsp?idx=${idx}">게시글삭제</a>
-    <a href="list.jsp">목록으로</a>
+    <a href="delete.do?idx=${idx}">게시글 삭제</a>
+    <a href="list.do">목록으로</a>
 </body>
 </html>
