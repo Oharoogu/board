@@ -19,7 +19,11 @@ public class BoardDao extends CommonDao {
     	GetDB().insert("insertArticle", article);
     }
 
-	public void deleteArticle(int idx) throws SQLException{
+	public void deleteArticle(int idx) throws SQLException {
 		GetDB().delete("deleteArticle", idx);
+	}
+
+	public Board getArticle(int idx) throws SQLException {
+		return  (Board)GetDB().queryForObject("getArticle", idx );
 	}
 }
