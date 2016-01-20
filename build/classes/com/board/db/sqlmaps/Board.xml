@@ -18,5 +18,9 @@
 		 VALUES 
 		 	(board_seq.nextval, #title#, #writer#, sysdate, #count#, #content#, #regip#)
 	</insert>
+	
+	<delete id="deleteArticle" parameterClass="int">
+		DELETE FROM BOARD WHERE idx = #value#
+	</delete>
 </sqlMap>
 
