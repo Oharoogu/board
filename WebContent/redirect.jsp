@@ -1,1 +1,1 @@
-<script>location.href="list.jsp"; </script>
+<script>location.href="list.do"; </script>
