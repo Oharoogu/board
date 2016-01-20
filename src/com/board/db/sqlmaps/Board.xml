@@ -11,5 +11,12 @@
 	<select id="getArticleList" resultClass="board">
 		select * from Board order by idx desc
 	</select>
+	
+	<insert id="insertArticle" parameterClass="board">
+		INSERT INTO BOARD 
+		 	(IDX, TITLE, WRITER, REGDATE, COUNT, CONTENT, REGIP)
+		 VALUES 
+		 	(board_seq.nextval, #title#, #writer#, sysdate, '1', #content#, #regip#)
+	</insert>
 </sqlMap>
 
