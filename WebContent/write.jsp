@@ -9,10 +9,11 @@
 <title>본격! 게시판 - 게시글 입력폼</title>
 </head>
 <body>
-<form action="insert.do" method="post" onsubmit="return formCheck();">
+<form action="insert.do" method="post" enctype="multipart/form-data" onsubmit="return formCheck();">
 		제목 : <input type="text" name="title" /><br>
 		작성자 : <input type="text" name="writer" /><br>
 		content : <textarea rows="10" cols="20" name="content"></textarea><br>
+		file : <input type="file" name="filename"><br/>
 		<input type="submit"/>
 	</form>
 <script>
