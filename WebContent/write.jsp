@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@page import="java.util.regex.Pattern"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,10 +9,9 @@
 <title>본격! 게시판 - 게시글 입력폼</title>
 </head>
 <body>
-<form action="insert.jsp" method="post" onsubmit="return formCheck();">
+<form action="insert.do" method="post" onsubmit="return formCheck();">
 		제목 : <input type="text" name="title" /><br>
 		작성자 : <input type="text" name="writer" /><br>
-		날짜 : <input type="text" name="regdate" /><br>
 		content : <textarea rows="10" cols="20" name="content"></textarea><br>
 		<input type="submit"/>
 	</form>
