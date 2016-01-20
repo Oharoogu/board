@@ -12,6 +12,10 @@
 		select * from Board order by idx desc
 	</select>
 	
+	<select id="getArticle" parameterClass="int" resultClass="board">
+		select * from board where idx = #value#
+	</select>
+	
 	<insert id="insertArticle" parameterClass="board">
 		INSERT INTO BOARD 
 		 	(IDX, TITLE, WRITER, REGDATE, COUNT, CONTENT, REGIP)
