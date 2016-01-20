@@ -16,6 +16,7 @@ public class InsertAction implements CommandAction{
 		request.setCharacterEncoding("euc-kr");
 		String title = request.getParameter("title");
 		String writer = request.getParameter("writer");
+		int count = 0;
 		String content = request.getParameter("content");
 		String regip = request.getRemoteAddr();
 
@@ -30,6 +31,7 @@ public class InsertAction implements CommandAction{
 		
 		article.setTitle(title);
 		article.setWriter(writer);
+		article.setCount(count);
 		article.setContent(content);
 		article.setRegip(regip);
 		BoardDao.getInstance().insertArticle(article);
