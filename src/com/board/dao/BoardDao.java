@@ -18,5 +18,8 @@ public class BoardDao extends CommonDao {
     public void insertArticle(Board article) throws SQLException {
     	GetDB().insert("insertArticle", article);
     }
-    
+
+	public void deleteArticle(int idx) throws SQLException{
+		GetDB().delete("deleteArticle", idx);
+	}
 }
