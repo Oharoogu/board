@@ -58,4 +58,10 @@ public class Board {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
+	public String toString() {
+		return "Board [idx=" + idx + ", title=" + title + ", writer=" + writer + ", regdate="
+				+ regdate + ", count=" + count + ", content=" + content + ", regip=" + regip + ", filename=" + filename
+				+ "]";
+	}
+	
 }
