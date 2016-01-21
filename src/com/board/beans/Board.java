@@ -8,6 +8,7 @@ public class Board {
 	private int count;
 	private String content;
 	private String regip;
+	private String filename;
 	
 	public int getIdx() {
 		return idx;
@@ -50,5 +51,11 @@ public class Board {
 	}
 	public void setRegip(String regip) {
 		this.regip = regip;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 }
