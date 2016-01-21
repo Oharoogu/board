@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.board.controller.CommandAction;
 import com.board.dao.BoardDao;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.board.beans.Board;
 import java.sql.*;
 
@@ -14,10 +16,23 @@ public class InsertAction implements CommandAction{
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("euc-kr");
-		String title = request.getParameter("title");
-		String writer = request.getParameter("writer");
+		
+		MultipartRequest multi = null;	
+		int sizeLimit = 10 * 1024 * 1024 ; // 10메가입니다.
+		String savePath = request.getRealPath("/upload");    // 파일이 업로드될 실제 tomcat 폴더의 WebContent 기준
+		
+		try{
+		multi=new MultipartRequest(request, savePath, sizeLimit, "euc-kr", new DefaultFileRenamePolicy()); 
+		 }catch (Exception e) {
+			e.printStackTrace();
+		 } 
+
+		String filename = multi.getFilesystemName("filename");
+		
+		String title = multi.getParameter("title");
+		String writer = multi.getParameter("writer");
 		int count = 0;
-		String content = request.getParameter("content");
+		String content = multi.getParameter("content");
 		String regip = request.getRemoteAddr();
 
 		if(title == "" || title == null) System.out.println("title이 null입니다.");
@@ -34,6 +49,7 @@ public class InsertAction implements CommandAction{
 		article.setCount(count);
 		article.setContent(content);
 		article.setRegip(regip);
+		article.setFilename(filename);
 		BoardDao.getInstance().insertArticle(article);
 		
 		return "insert.jsp";
